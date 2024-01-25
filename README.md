@@ -6,7 +6,7 @@ Project Details:
 - Vou documentar todos os passos que julgar ser importante para compartilhar esses conhecimentos com o próximo também;
 - Estarei usando o padrão MVC para a arquitetura, visto que o django também segue esse padrão, vejo como uma boa prática para organizar os projetos;
 - As APIs, vou usar o fastAPI;
-- O banco de dado, será o mySQL, pois já trabalho com postgres e mongoDB, logo quero aprofundar minhas skills em outras frentes, por mais que prefire o postgres é importante ter o maximo de contato com outras ferramentas;
+- O banco de dado, será o mySQL, pois já trabalho com postgreSQL e mongoDB, logo quero aprofundar minhas skills em outras frentes, por mais que prefire o postgreSQL é importante ter o maximo de contato com outras ferramentas;
 
 Dependencies:
 
