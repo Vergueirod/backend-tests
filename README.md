@@ -42,3 +42,10 @@ pip list
 
 Depois de tudo configurado corretamente, é só rodar o servidor:
 uvicorn main:app --reload
+
+Encerrar uma porta já usada no uvicorn:
+Identificar o PID do processo que está usando a porta:
+lsof -i :8000 
+
+Terminar o processo:
+kill -9 <PID>
