@@ -106,3 +106,36 @@ def get_volumes():
             })
                 
     return volumes_datas
+
+
+@app.get("/pedidos-peso")
+def get_peso():
+    dados_pedido = parse_pedido()
+    pedidos = dados_pedido['retorno']['pedidos']
+    peso_datas = []
+    
+    for data_pedido in pedidos:
+        transp = data_pedido['pedido']['transporte']
+        vol_data = transp['volumes']
+        
+        for i in vol_data:
+            vol = i['volume']
+            dim_acess = vol['dimensoes']
+            
+            peso_datas.append({
+                'Peso': dim_acess['peso']
+            })
+                   
+    return peso_datas
+
+
+@app.get("/pedido-peso-total")
+def get_peso_total():
+    pesos_retorno = get_peso()
+    calc_peso = 0.0
+    
+    for i in pesos_retorno:
+        teste = i['Peso']
+        calc_peso += float(teste)        
+    
+    return {'Peso total': calc_peso}
