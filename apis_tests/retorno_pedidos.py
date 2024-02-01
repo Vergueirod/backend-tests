@@ -13,8 +13,8 @@ def parse_pedido():
     dados_pedido = carregar_dados_json()
     return dados_pedido
 
-@app.get("/pedidos")
-def get_pedidos():
+@app.get("/pedidos-last")
+def get_pedidos_last():
     dados_pedido = parse_pedido()
     pedidos = dados_pedido['retorno']['pedidos']
     
@@ -27,3 +27,18 @@ def get_pedidos():
         }
     else:
         return {"mensagem": "Nenhum pedido encontrado."}
+    
+@app.get("/pedidos-list")
+def get_pedidos_list():
+    dados_pedido = parse_pedido()
+    pedidos = dados_pedido['retorno']['pedidos']
+    lista_pedidos = []
+
+    for pedido in pedidos:
+        info_pedido = pedido['pedido']
+        lista_pedidos.append({
+            "Numero do pedido": info_pedido['numero'],
+            "Total de Venda": info_pedido['totalvenda']
+        })
+
+    return lista_pedidos
