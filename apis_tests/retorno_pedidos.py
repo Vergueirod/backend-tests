@@ -86,3 +86,23 @@ def get_transportadora():
         })
         
     return transportadora_datas
+
+
+@app.get("/pedidos-volumes")
+def get_volumes():
+    dados_pedido = parse_pedido()
+    pedidos = dados_pedido['retorno']['pedidos']
+    volumes_datas = []
+    
+    for data_pedido in pedidos:
+        transp = data_pedido['pedido']['transporte']
+        vol_data = transp['volumes']
+        
+        for j in vol_data:
+            vol = j['volume']
+                
+            volumes_datas.append({
+                'id Service': vol['idServico']
+            })
+                
+    return volumes_datas
