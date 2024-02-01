@@ -69,4 +69,20 @@ def get_pedidos_items():
             })
     
     return item_list
+
+
+@app.get("/pedidos-transportadora")
+def get_transportadora():
+    dados_pedido = parse_pedido()
+    pedidos = dados_pedido['retorno']['pedidos']
+    transportadora_datas = []
     
+    for data_pedido in pedidos:
+        transp = data_pedido['pedido']['transporte']
+        transportadora_datas.append({
+            'Transportadora': transp['transportadora'],
+            'CNPJ': transp['cnpj'],
+            'Tipo de Frete': transp['tipo_frete'],
+        })
+        
+    return transportadora_datas
