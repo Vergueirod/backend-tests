@@ -139,3 +139,18 @@ def get_peso_total():
         calc_peso += float(teste)        
     
     return {'Peso total': calc_peso}
+
+
+@app.get("/vendedor-name")
+def get_vendedor():
+    dados_pedido = parse_pedido()
+    pedidos = dados_pedido['retorno']['pedidos']
+    info_name = []
+    
+    for pedido in pedidos:
+        acesso_info = pedido['pedido']
+        info_name.append({
+            "nome": acesso_info['vendedor']
+        })
+    
+    return info_name
